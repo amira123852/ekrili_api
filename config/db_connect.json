@@ -1,6 +1,6 @@
 {
     "local": "mongodb://localhost:27017/ekrili_db",
-    "remote_stage": "",
-    "remote_production": "mongodb+srv://amira:mirou@123@cluster0.yrci4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "remote_stage": "mongodb+srv://amira:amira:amira@cluster0.yrci4.mongodb.net/ekrili_db?retryWrites=true&w=majority",
+    "remote_production": "mongodb+srv://amira:amira@cluster0.yrci4.mongodb.net/ekrili_db?retryWrites=true&w=majority",
     "test":"mongodb://localhost:27017/test_ekrili_db"
 }
