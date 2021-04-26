@@ -22,12 +22,35 @@ const addNewHouse = Maison => async (maison) => {
 
 }
 
+const getAllHouses = Maison => async ()=>{
+   try {
+     let result = await Maison.find().populate('annoceur');
+     if(result){
+        return ({
+            status: "success",
+            message: "All Houses",
+            payload: result
+        })
+     }
+   } catch (error) {
+    return ({
+        status: "error",
+        message: "error. unable to get all Houses",
+        payload: error
+    })
+       
+   }
+   
+
+}
+
 
 
 
 
 module.exports = (Maison) => {
     return {
-        addNewHouse: addNewHouse(Maison)
+        addNewHouse: addNewHouse(Maison),
+        getAllHouses:getAllHouses(Maison)
     }
 }
