@@ -1,5 +1,3 @@
-
-
 const addNewHouse = Maison => async (maison) => {
 
     const _maison = new Maison(maison);
@@ -15,7 +13,7 @@ const addNewHouse = Maison => async (maison) => {
     } catch (error) {
         return ({
             status: "failed",
-            message: "User failed to register!!!",
+            message: "failed!!!",
             payload: error
         })
     }
