@@ -12,15 +12,15 @@ const Schema = mongoose.Schema;
  * User Schema
  */
 const UserSchema = new Schema({
-    fullusername: {
+    nom: {
         type: String,
         trim: true,
-        required: [true, 'fullname is required'],
+        required: [true, 'nom est obligatoire!!'],
     },
     email: {
         type: String,
         trim: true,
-        required: [true, 'email is required'],
+        required: [true, 'email est obligatoire!!'],
         unique: 'Two users cannot share the same email ({VALUE})',
         lowercase: true,
         validate: [validateEmail, 'Please fill a valid email address'],
@@ -29,15 +29,15 @@ const UserSchema = new Schema({
     password: {
         type: String,
         trim: true,
-        required: [true, 'password is required']
+        required: [true, 'mot de passe et obligatoire']
     },
-    phone: {
+   telephone: {
         type: String,
     },
-    city: {
+    ville: {
         type: String
     },
-    avatar_url: {
+    datenaissance: {
         type: String
     },
     role: {

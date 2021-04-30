@@ -96,12 +96,13 @@ router.get('/user/:id', helpers.validateUser, helpers.isGranted, async function 
 // PUT /update/:id
 router.put('/update/:id', helpers.validateUser, helpers.isGranted, async function (req, res,next) {
   if (
-    !req.body.hasOwnProperty('fullusername') &&
-    !req.body.hasOwnProperty('phone') &&
-    !req.body.hasOwnProperty('city')) {
+    !req.body.hasOwnProperty('nom') &&
+    !req.body.hasOwnProperty('telephone') &&
+    !req.body.hasOwnProperty('datenaissance') &&
+    !req.body.hasOwnProperty('ville')) {
     res.status(422).json({
       status: "error",
-      message: 'You Should send fullusername and/or phone and/or city',
+      message: 'il faut taper nom ,ville,telephone,datenaissance',
       payload: null
     });
   } else {
