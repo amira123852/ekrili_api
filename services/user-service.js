@@ -31,15 +31,11 @@ const authenticate = (User) => async (email, password) => {
   }
 
   try {
-    const user = await User.findOne({
-      email: email,
-    });
+    const user = await User.findOne({  email: email });
     if (comparePassword(password, user.password)) {
       const token = getToken(user);
-      return {
-        status: "success",
-        message: "user authenticated succssfully!!!",
-        payload: {
+      return { status: "success",  message: "user authenticated succssfully!!!",
+       payload: {
           user: user.toJSON(),
           token: token,
         },
@@ -55,7 +51,7 @@ const authenticate = (User) => async (email, password) => {
     return {
       status: "error",
       message: "user can't authenticate",
-      payload: null,
+      payload: error,
     };
   }
 };
