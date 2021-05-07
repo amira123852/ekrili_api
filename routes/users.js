@@ -28,6 +28,7 @@ router.post('/register', [check('email').isEmail()], async function (req, res, n
         res.json(response);
       } catch (error) {
         next(error)
+        console.log(error)
       }
 
     }

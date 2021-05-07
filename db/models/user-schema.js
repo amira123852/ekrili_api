@@ -32,19 +32,21 @@ const UserSchema = new Schema({
         required: [true, 'mot de passe et obligatoire']
     },
    telephone: {
-        type: String,
+        type: String
     },
     ville: {
         type: String
     },
     datenaissance: {
-        type: String
+        type: Date
     },
     role: {
         type: String,
         required: true,
         default: 'GUEST'
     },
+  // maison:[{type:Schema.Types.ObjectId,ref:"Maison"}],
+
     isGranted: {
         type: Boolean,
         default: false

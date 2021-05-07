@@ -7,6 +7,7 @@ const maisonService = require('../services/maison-services')(Maison);
 // TODO: this ressources chould be acceced only by ADMIN
 router.post('/add', async function (req, res, next) {
     let {..._maison}=req.body;
+    
     try {
         result = await maisonService.addNewHouse(_maison);
         res.json(result);

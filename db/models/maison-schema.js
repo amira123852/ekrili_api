@@ -25,9 +25,9 @@ const MaisonSchema = new Schema({
         default:"assets/default_house.png"
     },
     prix:{
-        type:Number
+        type:String
     },
-    annonceur:{type:Schema.Types.ObjectId,ref:"User"}
+   annonceur:{type:Schema.Types.ObjectId,ref:"User"}
 
 }, {
     timestamps: true
