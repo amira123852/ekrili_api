@@ -45,7 +45,10 @@ const UserSchema = new Schema({
         required: true,
         default: 'GUEST'
     },
-  // maison:[{type:Schema.Types.ObjectId,ref:"Maison"}],
+ maison:[{
+     type:Schema.Types.ObjectId,
+    ref:"Maison"
+      }],
 
     isGranted: {
         type: Boolean,

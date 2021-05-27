@@ -6,7 +6,8 @@ const {
   check,
   validationResult
 } = require('express-validator');
-const userService = require('../services/user-service')(User);
+const userService = require('../services/user-service')
+(User);
 
 
 // @ts-check
