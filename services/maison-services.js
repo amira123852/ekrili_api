@@ -103,10 +103,42 @@ const removeMaison = (Maison) => async (id) => {
   }
 };
 
+const getMaisonById = Maison => async (id) => {
+  if (id === undefined) {
+      return ({
+          status: "error",
+          message: `Cant't get a Maison without id`,
+          payload: null
+      })
+  } else {
+      try {
+          let maison = await Maison.findById(id);
+          if (maison) {
+              return ({
+                  status: "success",
+                  message: "success to get a maison",
+                  payload: maison
+              })
+          }
+      } catch (error) {
+          return ({
+              status: "error",
+              message: "Unable to get the maison",
+              payload: error
+          })
+      }
+  }
+}
+
+
+  
+
 module.exports = (Maison) => {
   return {
     addNewHouse: addNewHouse(Maison),
     GetHouses: GetHouses(Maison),
+    getMaisonById: getMaisonById(Maison),
+
     updateMaison: updateMaison(Maison),
     removeMaison: removeMaison(Maison)
   };

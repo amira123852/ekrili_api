@@ -30,7 +30,12 @@ const MaisonSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref:"User",
         required:[true, 'user is required']
-    }
+    },
+    // reservation: {
+    //     type: Schema.Types.ObjectId,
+    //     ref:"Reservation",
+    //     required:[true, 'reservation is required']
+    // }
 }, {
     timestamps: true
 });

@@ -96,8 +96,19 @@ router.delete('/delete/:id', async function (req, res, next) {
     console.log(error)
     next(error);
   }
+}); 
+// Get a Maison By Id
+router.get('/:id',  async function (req, res, next) {
+  let maisonId=req.params.id;
+  try {
+    let response = await maisonService.getMaisonById(maisonId);
+    if (response) {
+      res.json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
 });
-
 
 
 module.exports = router;
