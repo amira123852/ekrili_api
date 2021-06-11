@@ -1,5 +1,6 @@
 const { getToken, comparePassword } = require("../helpers/auth.helpers");
 const ROLES = require("../helpers/user-validation").roles;
+const Contact = require('../db/models/contact-schema');
 
 const register = (User) => async (u) => {
   const user = new User(u);
@@ -133,9 +134,49 @@ const deleteUser = (User) => async (id) => {
     };
   }
 };
+const contactus = (Contact) => async (contact) => {
+  const _contact = new Contact(contact);
+
+  try {
+    
+    const save= await _contact.save();
+
+    if (save) {
+      return {
+        status: "success",
+        message: "Contact succssfully!!!",
+        payload: save,
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return {
+      status: "failed",
+      message: "failed!!!",
+      payload: error,
+    };
+  }
+};
 
 
-
+const ContactList = (Contact) => async () => {
+  try {
+    let contacts = await Contact.find({}).populate("customer");
+    if (contacts) {
+      return {
+        status: "success",
+        message: "all messages",
+        payload: contacts,
+      };
+    }
+  } catch (error) {
+    return {
+      status: "error",
+      message: "error to get messages",
+      payload: null,
+    };
+  }
+};
 module.exports = (User) => {
   return {
     register: register(User),
@@ -145,6 +186,8 @@ module.exports = (User) => {
     updateUser: updateUser(User),
    // updateUserRole: updateUserRole(User),
     deleteUser: deleteUser(User),
-   
+   contactus: contactus(Contact),
+  ContactList: ContactList(Contact)
+
   };
 };

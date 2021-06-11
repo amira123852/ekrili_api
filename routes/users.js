@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../db/models/user-schema');
+const Contact = require('../db/models/contact-schema');
+
 const helpers = require('../helpers/user-validation');
 const {
   check,
@@ -171,6 +173,31 @@ router.delete('/delete/:id', async function (req, res, next) {
     next(error);
   }
 });
+router.post('/contact', async function (req, res, next) {
 
+  let {..._contact}=req.body;
+  try {
+      let  result = await userService.contactus(_contact);
+       res.json(result);
+       
+   } catch (error) {
+       console.log(error)
+      next(); 
+   }
+});
+router.get('/listcontact', async function (req, res, next) {
+  try {
+      let response = await userService.ContactList();
+      if (response) {
+          res.json(response)
+      }
+  } catch (error) {
+      next(error)
+  }
+});
+
+
+
+  
 
 module.exports = router;

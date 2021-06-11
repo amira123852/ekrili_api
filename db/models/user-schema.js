@@ -42,11 +42,11 @@ const UserSchema = new Schema(
     datenaissance: {
       type: Date,
     },
-    // reservation: {
-    //     type: Schema.Types.ObjectId,
-    //     ref:"Reservation",
-    //     required:[true, 'reservation is required']
-    // },
+    reservation:[ {
+        type: Schema.Types.ObjectId,
+        ref:"Reservation",
+        required:[true, 'reservation is required']
+    }],
 
     role: {
       type: String,

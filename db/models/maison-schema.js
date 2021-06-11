@@ -15,11 +15,11 @@ const MaisonSchema = new Schema({
       trim: true
   },
 
-    Photo: {
+    Photo: [{
         type: [String],
         required: [true, 'picture url is required'],
         trim: true
-    },
+    }],
     prix: {
       type: String,
       required: [true, 'price is required'],
@@ -31,11 +31,7 @@ const MaisonSchema = new Schema({
         ref:"User",
         required:[true, 'user is required']
     },
-    // reservation: {
-    //     type: Schema.Types.ObjectId,
-    //     ref:"Reservation",
-    //     required:[true, 'reservation is required']
-    // }
+   
 }, {
     timestamps: true
 });

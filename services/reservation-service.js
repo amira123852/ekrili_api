@@ -50,6 +50,51 @@ const addNewReservation = (Reservation) => async (reservation) => {
       };
     }
   };
+  const GetReservations = (Reservation) => async () => {
+    try {
+      let result = await Reservation.find({cofirmation:false}).populate("client").populate("house");
+      if (result) {    
+        return {
+          status: "success",
+          message: "All Reservations",
+          payload: result,
+        };
+      }
+    } catch (error) {
+      console.log(error)
+      return {
+        status: "error",
+        message: "error. unable to get all Reservations",
+        payload: error,
+      };
+    }
+  };
+  
+  const GetReservationsConf = (Reservation) => async () => {
+    try {
+      let result = await Reservation.find({cofirmation:true}).populate("client").populate("house");
+      if (result) {    
+        return {
+          status: "success",
+          message: "All Reservations",
+          payload: result,
+        };
+      }
+    } catch (error) {
+      console.log(error)
+      return {
+        status: "error",
+        message: "error. unable to get all Reservations",
+        payload: error,
+      };
+    }
+  };
+  
+  
+      
+ 
+      
+    
   const deleteReservation = (Reservation) => async (id) => {
     if (id === undefined) {
       return {
@@ -83,7 +128,9 @@ const addNewReservation = (Reservation) => async (reservation) => {
     return {
       addNewReservation: addNewReservation(Reservation),
       updateReservation: updateReservation(Reservation),
-      deleteReservation: deleteReservation(Reservation)
+      deleteReservation: deleteReservation(Reservation),
+     GetReservations: GetReservations(Reservation),
+     GetReservationsConf: GetReservationsConf(Reservation)
 
 
     };

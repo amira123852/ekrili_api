@@ -19,17 +19,21 @@ const upload=multer({
    
 })
 
-router.post('/add', upload.any("Photo"), async function (req, res, next) {
+router.post('/add', upload.array("Photo", 4), async function (req, res, next) {
 
    /* let user = await User.findOne({_id : req.body.annonceur});
     if (!user) {
    res.status(400).send("pas de user"); 
     } */
     let {..._maison}=req.body;
-    
-    req.files.map(file => {
-    _maison.Photo = "http://localhost:5000/" + file.path;
-    })     
+    let urls = [];
+    for (file of req.files) {
+     
+      urls.push("http://localhost:5000/" + file.path);
+  
+    }
+    _maison.Photo = urls;
+     
      //   _maison.annonceur=user._id
   
   

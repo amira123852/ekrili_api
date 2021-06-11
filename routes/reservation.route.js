@@ -41,6 +41,28 @@ reservation.cofirmation="true"
     next(error);
   }
 });
+
+router.get('/conf', async function (req, res, next) {
+  try {
+      let response = await reservationService.GetReservationsConf();
+      if (response) {
+          res.json(response)
+      }
+  } catch (error) {
+      next(error)
+  }
+});
+
+router.get('/', async function (req, res, next) {
+  try {
+      let response = await reservationService.GetReservations();
+      if (response) {
+          res.json(response)
+      }
+  } catch (error) {
+      next(error)
+  }
+});
 //DELETE /delete/:id
 router.delete('/delete/:id', async function (req, res, next) {
   let id = req.params.id;
