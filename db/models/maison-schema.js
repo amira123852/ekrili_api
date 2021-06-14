@@ -9,11 +9,16 @@ const MaisonSchema = new Schema({
         required: [true, 'type immobilier is required'],
         trim: true
     },
-    description: {
+    nom : {
       type: String,
-      required: [true, 'description is required'],
+      required: [true, 'nom de logement is required'],
       trim: true
   },
+  description: {
+    type: String,
+    required: [true, 'description is required'],
+    trim: true
+},
 
     Photo: [{
         type: [String],
@@ -25,6 +30,11 @@ const MaisonSchema = new Schema({
       required: [true, 'price is required'],
       trim: true
   },
+  reservation: [{
+    type: Schema.Types.ObjectId,
+    ref:"Reservation",
+    required:[true, 'reservation is required']
+}],
    
     annonceur: {
         type: Schema.Types.ObjectId,

@@ -5,13 +5,8 @@ const reservationService = require("../services/reservation-service")(
   Reservation
 );
 router.post("/reserve", async function (req, res, next) {
-  /* let user = await User.findOne({_id : req.body.annonceur});
-     if (!user) {
-    res.status(400).send("pas de user"); 
-     } */
   let { ..._reservation } = req.body;
 
-  //   _maison.annonceur=user._id
 
   try {
     result = await reservationService.addNewReservation(_reservation);

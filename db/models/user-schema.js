@@ -53,12 +53,18 @@ const UserSchema = new Schema(
       required: true,
       default: "GUEST",
     },
+  reservation: [{
+      type: Schema.Types.ObjectId,
+      ref:"Reservation",
+      required:[true, 'reservation is required']
+  }],
     maison: [
       {
         type: Schema.Types.ObjectId,
         ref: "Maison",
       },
     ],
+    
 
     isGranted: {
       type: Boolean,
