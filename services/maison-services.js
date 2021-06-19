@@ -4,7 +4,11 @@ const addNewHouse = (Maison) => async (maison) => {
   try {
     
     const save= await _maison.save();
-
+    console.log(save._id)
+                 let client =_maison.annonceur
+         console.log(client)
+         client.maison.push(save._id)
+         await client.save()
     if (save) {
       return {
         status: "success",
@@ -131,7 +135,6 @@ const getMaisonById = Maison => async (id) => {
 }
 
 
-  
 
 module.exports = (Maison) => {
   return {
@@ -140,6 +143,7 @@ module.exports = (Maison) => {
     getMaisonById: getMaisonById(Maison),
 
     updateMaison: updateMaison(Maison),
-    removeMaison: removeMaison(Maison)
+    removeMaison: removeMaison(Maison),
+
   };
 };

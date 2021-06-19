@@ -42,11 +42,7 @@ const UserSchema = new Schema(
     datenaissance: {
       type: Date,
     },
-    reservation:[ {
-        type: Schema.Types.ObjectId,
-        ref:"Reservation",
-        required:[true, 'reservation is required']
-    }],
+ 
 
     role: {
       type: String,
@@ -58,7 +54,7 @@ const UserSchema = new Schema(
       ref:"Reservation",
       required:[true, 'reservation is required']
   }],
-    maison: [
+    house: [
       {
         type: Schema.Types.ObjectId,
         ref: "Maison",

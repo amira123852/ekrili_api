@@ -82,7 +82,7 @@ router.get('/', async function (req, res, next) {
  * GET /user/:id
  */
 
-/*router.get('/user/:id', helpers.validateUser, helpers.isGranted, async function (req, res,next) {
+router.get('/use/:id', async function (req, res,next) {
   let id = req.params.id;
   try {
     let response = await userService.getUserById(id);
@@ -94,7 +94,7 @@ router.get('/', async function (req, res, next) {
   }
 
 })
- */
+ 
 
 // Upadate User Info
 // PUT /update/:id
@@ -195,9 +195,31 @@ router.get('/listcontact', async function (req, res, next) {
       next(error)
   }
 });
+router.get('/maisonuser/:id',  async function (req, res, next) {
+  let id = req.params.id;
+  try {
+    let response = await userService.getMaisonByUserId(id);
+    if (response) {
+      res.json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 
-
+// Get a User By Id
+router.get('/:id',  async function (req, res, next) {
+  let userId=req.params.id;
+  try {
+    let response = await userService.getUserById(userId);
+    if (response) {
+      res.json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
   
 
 module.exports = router;

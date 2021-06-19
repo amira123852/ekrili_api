@@ -14,10 +14,7 @@ const storage =multer.diskStorage({
     }
 });
 
-const upload=multer({
-    storage: storage,
-   
-})
+const upload=multer({ storage: storage,})
 
 router.post('/add', upload.array("Photo", 4), async function (req, res, next) {
 
@@ -113,6 +110,7 @@ router.get('/:id',  async function (req, res, next) {
     next(error);
   }
 });
+// Get a Maison By Id
 
 
 module.exports = router;

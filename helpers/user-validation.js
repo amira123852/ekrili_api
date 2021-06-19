@@ -59,6 +59,11 @@ module.exports = {
         admin: "ADMIN",
         guest: "GUEST",
         supervisor: "SUPERVISOR",
-        user: "USER"
+        user: "USER",
+        student: "STUDENT",
+        provider: "PROVIDER"
+
     }
 }
+
+// ACCESS CNTROL LEVEL

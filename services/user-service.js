@@ -177,17 +177,80 @@ const ContactList = (Contact) => async () => {
     };
   }
 };
+const getUserById = User => async (id) => {
+
+
+  if (id === undefined) {
+      return ({
+          status: "error",
+          message: `Cant't get User without id`,
+          payload: null
+      })
+  } else {
+      try {
+        
+          let user= await User.findById(id);
+          if (user) {
+              return ({
+                  status: "success",
+                  message: "success to get a user",
+                  payload: user
+              })
+          }
+      } catch (error) {
+          return ({
+              status: "error",
+              message: "Unable to get the user",
+              payload: error
+          })
+      }
+  }
+}
+const getMaisonByUserId = User => async (id) => {
+  
+  if (id === undefined) {
+      return ({
+          status: "error",
+          message: `Cant't get a Maison without id`,
+          payload: null
+      })
+  } else {
+      try {
+     
+ 
+        result = await User.findById(id).populate('house');
+          if (result) {
+              return ({
+                  status: "success",
+                  message: "success to get a maison user",
+                  payload: result
+              })
+          }
+      } catch (result) {
+          return ({
+              status: "error",
+              message: "Unable to get the maison user",
+              payload: error
+          })
+      }
+  }
+}
+
+
+  
+
 module.exports = (User) => {
   return {
     register: register(User),
     authenticate: authenticate(User),
     getAllUsers: getAllUser(User),
- //   getUserById: getUserById(User),
+   getUserById: getUserById(User),
     updateUser: updateUser(User),
    // updateUserRole: updateUserRole(User),
     deleteUser: deleteUser(User),
    contactus: contactus(Contact),
-  ContactList: ContactList(Contact)
+  ContactList: ContactList(Contact),
+  getMaisonByUserId: getMaisonByUserId(User)
 
   };
 };
