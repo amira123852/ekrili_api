@@ -15,7 +15,6 @@ module.exports = {
                     userid : decoded.id,
                     email : decoded.email,
                     role : decoded.role,
-                    isGranted :decoded.isGranted
                 }
                 next();
             }
@@ -32,23 +31,23 @@ module.exports = {
             next();
         }
     },
-    isGranted: async function (req, res, next) {
-        if (req.body.logged.isGranted !== true) {
+    
+  PROVIDER: async function (req, res, next) {
+        if (req.body.logged.role !== "PROVIDER") {
             res.json({
                 status: "error",
-                message: "error You are not allowed you'r access not granted yet",
+                message: "error You are not allowed You are not PROVIDER",
                 payload: null
             });
         } else {
             next();
         }
     },
-
-    isSupervisor: async function (req, res, next) {
-        if (req.body.logged.role !== "SUPERVISOR") {
+   STUDENT: async function (req, res, next) {
+        if (req.body.logged.role !== "STUDENT") {
             res.json({
                 status: "error",
-                message: "error You are not allowed You are not Supervisor",
+                message: "error You are not allowed You are not STUDENT",
                 payload: null
             });
         } else {
@@ -58,7 +57,6 @@ module.exports = {
     roles: {
         admin: "ADMIN",
         guest: "GUEST",
-        supervisor: "SUPERVISOR",
         user: "USER",
         student: "STUDENT",
         provider: "PROVIDER"

@@ -110,7 +110,21 @@ router.get('/:id',  async function (req, res, next) {
     next(error);
   }
 });
-// Get a Maison By Id
+// Get a Maison By id
+
+// Get a Maisons for Specific User (annonceur)
+router.get('/annonceur/:id',  async function (req, res, next) {
+  let userId=req.params.id;
+  console.log(userId);
+  try {
+    let response = await maisonService.GetHousesForSpecificUser(userId);
+    if (response) {
+      res.json(response);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
 
 module.exports = router;

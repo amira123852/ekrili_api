@@ -62,10 +62,6 @@ const UserSchema = new Schema(
     ],
     
 
-    isGranted: {
-      type: Boolean,
-      default: false,
-    },
   },
   {
     timestamps: true,

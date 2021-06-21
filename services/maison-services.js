@@ -46,6 +46,30 @@ const GetHouses = (Maison) => async () => {
   }
 };
 
+// get houses for a specific provider (User)
+const GetHousesForSpecificUser = Maison =>  async (_id) => {
+
+  console.log(_id)
+  try {
+    let result = await Maison.find({annonceur:_id}).populate("annonceur");
+    if (result) { 
+      console.log(result);   
+      return {
+        status: "success",
+        message: "All Houses for this user",
+        payload: result,
+      };
+    }
+  } catch (error) {
+    console.log(error)
+    return {
+      status: "error",
+      message: "error. unable to get all Houses for tis user",
+      payload: error,
+    };
+  }
+};
+
 const updateMaison = (Maison) => async (id, maison) => {
   if (
     id === undefined ||
@@ -144,6 +168,7 @@ module.exports = (Maison) => {
 
     updateMaison: updateMaison(Maison),
     removeMaison: removeMaison(Maison),
+    GetHousesForSpecificUser:GetHousesForSpecificUser(Maison)
 
   };
 };
