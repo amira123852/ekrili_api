@@ -16,6 +16,11 @@ const UserSchema = new Schema(
       trim: true,
       required: [true, "nom est obligatoire!!"],
     },
+    sexe: {
+      type: String,
+      trim: true,
+      required: [true, "sexe est obligatoire!!"],
+    },
     email: {
       type: String,
       trim: true,

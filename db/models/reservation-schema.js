@@ -18,7 +18,12 @@ const ReservationSchema = new Schema({
     ref:"Maison",
     required:[true, 'maison is required']
 
-    }
+    },
+   date_reservation: {
+  type:Date,
+     default:Date.now()
+    },
+
 }, {
     timestamps: true
 });

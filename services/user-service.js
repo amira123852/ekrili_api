@@ -14,6 +14,7 @@ const register = (User) => async (u) => {
       };
     }
   } catch (error) {
+
     return {
       status: "failed",
       message: "User failed to register!!!",

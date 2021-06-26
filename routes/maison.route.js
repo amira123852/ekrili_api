@@ -61,16 +61,16 @@ router.get('/', async function (req, res, next) {
 
 
 // Update
-router.put('/update/:id', upload.any("file", 10), async function (req, res, next) {
+router.put('/update/:id', upload.any("Photo", 10), async function (req, res, next) {
   let maisonId = req.params.id;
   let maison = {
     ...req.body
   };
   let urls = [];
-  for (file of req.files) {
+ for (file of req.files) {
     urls.push("http://localhost:5000/" + file.path);
-  }
-  maison.Photo = urls;
+  } 
+maison.Photo = urls;
  
 
   try {
